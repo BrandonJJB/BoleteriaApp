@@ -1,0 +1,7 @@
+{
+  "name": "Foreman",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
