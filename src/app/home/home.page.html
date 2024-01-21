@@ -13,8 +13,24 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  <swiper-container [loop]="true" [pagination]="true" [slidesPerView]="1">
+    <swiper-slide>
+      <h1>Bienvenido a Foreman!</h1>
+      <p>Explora un nuevo nivel de conveniencia en la compra de boletos.</p>
+      <img src="assets/img/img1.jpg" alt="">
+      <p >Swipe para continuar</p>
+    </swiper-slide>
+    <swiper-slide>
+      <h1>Tu Portal Personalizado de Boletos con Foreman</h1>
+      <p>Inicia tu viaje con Foreman, tu destino para boletos personalizados.</p>
+      <img src="assets/img/img2.jpg"alt="">
+      <p>Swipe para continuar</p>
+    </swiper-slide>
+    <swiper-slide>
+      <h1>Comodidad en la Palma de tu Mano con Foreman</h1>
+      <p>¡Salta las filas y accede a tus eventos preferidos de manera fácil y rápida con Foreman! </p>
+      <img src="assets/img/img3.jpg"alt="">
+      <p>Swipe para continuar</p>
+    </swiper-slide>
+  </swiper-container>
+  </ion-content>

@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Kanit'; 
+  src: url('/assets/fonts/kanit.woff2') format('woff2');
+}
+
+*{
+  font-family: 'Kanit', sans-serif;
+}
 #container {
   text-align: center;
 
@@ -25,3 +33,45 @@
 #container a {
   text-decoration: none;
 }
+
+swiper-container {
+  width: 100%;
+  height: 100%;
+  
+}
+
+swiper-slide{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+swiper-slide img{
+  
+  width: 280px;
+  height: 280px;
+ 
+}
+
+swiper-slide h1{
+font-size: 20px;
+font-weight: bold;
+text-align: center;
+padding-left: 15px;
+padding-right: 15px;
+}
+
+swiper-slide p{
+  font-size: 16px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+}
+
+swiper-slide p:nth-of-type(2){
+ 
+  font-weight: bold; 
+}
+
