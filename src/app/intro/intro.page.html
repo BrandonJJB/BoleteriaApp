@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+   
+  </ion-header>
+
+  <swiper-container [loop]="true" [pagination]="true" [slidesPerView]="1">
+    <swiper-slide *ngFor="let slide of slides">
+      <h1>{{slide.title}}</h1>
+      <p>{{slide.description}}</p>
+      <img src="{{slide.img}}" alt="">
+      <p >{{slide.help_text}}</p>
+      <ion-button color="danger" (click)="goToHome()">ver Home</ion-button>
+    </swiper-slide>
+    
+  </swiper-container>
+  
+  </ion-content>
+
+  
