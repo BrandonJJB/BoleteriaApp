@@ -11,7 +11,7 @@ constructor (private router: Router,
             private storage: Storage) {}
 
   async canActivate() {
-   const mostreIntro= await this.storage.get('mostreLaIntro');
+   const mostreIntro= await this.storage.get('yaviLaIntro');
    if (mostreIntro) {
     return true;
    } else {  
@@ -19,5 +19,6 @@ constructor (private router: Router,
     return false;
   }
   
-}
+
   }
+    }

@@ -7,7 +7,7 @@
    
   </ion-header>
 
-  <swiper-container [loop]="true" [pagination]="true" [slidesPerView]="1">
+  <swiper-container [loop]="true" [pagination]="{ type: 'bullets', clickable: true }" [slidesPerView]="1">
     <swiper-slide *ngFor="let slide of slides">
       <h1>{{slide.title}}</h1>
       <p>{{slide.description}}</p>
