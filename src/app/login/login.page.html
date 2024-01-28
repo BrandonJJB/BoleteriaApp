@@ -1,23 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title class="ion-text-center ion-text-uppercase">login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
   <figure class="ion-text-center">
     <ion-avatar class="center-avatar">
-    <img src="../assets/img/user.jpg" alt="logo" class="logo">
-  </ion-avatar>
+      <img src="../assets/img/user.jpg" alt="logo" class="logo">
+    </ion-avatar><br>
+    <div>Bienvenido a Foreman!</div>
   </figure>
-  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
-      
-        <ion-item >
-          <ion-input label="Email" labelPlacement="floating" fill="solid" placeholder="Email" formControlName="email"></ion-input>
-        </ion-item><br>
-        <ion-item >
-          <ion-input label="Password" type="Password" labelPlacement="floating" fill="solid" placeholder="Password" formControlName="password"></ion-input>
-        </ion-item>
-        <ion-button type="submit"  [disabled]="!loginForm.valid">Login</ion-button>
+  <form class="form_pos" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+    <ion-item>
+      <ion-input label="Email" labelPlacement="floating" fill="solid" placeholder="Email"
+        formControlName="email"></ion-input>
+    </ion-item>
+    <div class="validation_message">
+      <ng-container *ngFor="let validation of validation_message.email">
+        <div *ngIf="(loginForm.get('email')?.hasError (validation.type) && loginForm.get('email')?.dirty)">
+          {{validation.message}}</div>
+      </ng-container><br>
+    </div>
+    <ion-item>
+      <ion-input label="Password" type="Password" labelPlacement="floating" fill="solid" placeholder="Password"
+        formControlName="password"></ion-input>
+    </ion-item>
+    <div class="validation_message">
+      <ng-container *ngFor="let validation of validation_message.password">
+        <div *ngIf="(loginForm.get('password')?.hasError (validation.type) && loginForm.get('password')?.dirty)">
+          {{validation.message}}</div>
+      </ng-container><br>
+    </div>
+    <ion-button class="login_button" type="submit" [disabled]="!loginForm.valid">Login</ion-button><br>
+    <div style="display: flex; justify-content: center;" class="forgot_pass">Olvidaste tu contraseña?</div>
   </form>
 </ion-content>

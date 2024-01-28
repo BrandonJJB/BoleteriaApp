@@ -1,4 +1,36 @@
+@font-face {
+    font-family: 'Kanit'; 
+    src: url('/assets/fonts/kanit.woff2') format('woff2');
+  }
+  
+  *{
+    font-family: 'Kanit', sans-serif;  }
+
+   
+.ion-text-center{
+    padding-top: 250px;
+   
+    }
+
+.form_pos{
+    
+   padding-right: 20px;
+   padding-left: 20px;
+}
+
+
 .center-avatar {
     margin: auto;
+}
+
+.validation_message{
+    color: red;
+    padding-left: 18px;
+}
+
+.login_button{
+    display: flex;
+    padding-right: 50px;
+    padding-left: 50px;
 }
 
