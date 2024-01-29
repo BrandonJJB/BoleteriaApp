@@ -21,6 +21,7 @@
       <ion-input label="Password" type="Password" labelPlacement="floating" fill="solid" placeholder="Password"
         formControlName="password"></ion-input>
     </ion-item>
+    <div class="validation_message">{{loginMessage}}</div>
     <div class="validation_message">
       <ng-container *ngFor="let validation of validation_message.password">
         <div *ngIf="(loginForm.get('password')?.hasError (validation.type) && loginForm.get('password')?.dirty)">
@@ -30,4 +31,5 @@
     <ion-button class="login_button" type="submit" [disabled]="!loginForm.valid">Login</ion-button><br>
     <div style="display: flex; justify-content: center;" class="forgot_pass">Olvidaste tu contraseña?</div>
   </form>
+  
 </ion-content>

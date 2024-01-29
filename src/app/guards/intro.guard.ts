@@ -13,8 +13,10 @@ constructor (private router: Router,
   async canActivate() {
    const mostreIntro= await this.storage.get('yaviLaIntro');
    if (mostreIntro) {
+    console.log ('ya mostre la intro')
     return true;
    } else {  
+    console.log('no mostre la intro')
     this.router.navigateByUrl('/intro');
     return false;
   }
