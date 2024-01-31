@@ -10,39 +10,39 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
-registerValidation_message={
+  registerValidation_message = {
 
-  email: [
+    email: [
 
-    { type: "required", message: "el email es obligatorio" },
-    { type: "pattern", message: " el email ingresado no es valido" }
-  ],
+      { type: "required", message: "el email es obligatorio" },
+      { type: "pattern", message: " el email ingresado no es valido" }
+    ],
 
-  password: [
+    password: [
 
-    { type: "required", message: "Debes colocar una contraseña" },
-    { type: "pattern", message: "la contraseña debe tener: letra mayuscula, letra minuscula,numero, caracter especial!" }
-  ],
+      { type: "required", message: "Debes colocar una contraseña" },
+      { type: "pattern", message: "la contraseña debe tener: letra mayuscula, letra minuscula,numero, caracter especial!" }
+    ],
 
-  password_conf: [
-    { type: "required", message: "Debes confirmar tu contraseña" },
-    {type: "pattern", message: "Tus contraseñas no coinciden"}
-  ],
+    password_conf: [
+      { type: "required", message: "Debes confirmar tu contraseña" },
+      { type: "pattern", message: "Tus contraseñas no coinciden" }
+    ],
 
-name: [  
-{ type: "required", message:"Debes escribir tu nombre"},
-{type: "pattern", message: "Tu nombre solo debe llevar letras"}
+    name: [
+      { type: "required", message: "Debes escribir tu nombre" },
+      { type: "pattern", message: "Tu nombre solo debe llevar letras" }
 
-],
+    ],
 
-last_name: [
-  { type: "required", message:"Debes escribir tu apellido"},
-  {type: "pattern", message: "Tu apellido solo debe llevar letras"}
+    last_name: [
+      { type: "required", message: "Debes escribir tu apellido" },
+      { type: "pattern", message: "Tu apellido solo debe llevar letras" }
 
-]
+    ]
 
-}
-registerMessage:any;
+  }
+  registerMessage: any;
   constructor(private formBuilder: FormBuilder,
     private navCtrl: NavController,
     private storage: Storage,
@@ -54,12 +54,12 @@ registerMessage:any;
       )
       ])
       ),
-      password: new FormControl("", Validators.compose([Validators.required, Validators.pattern(('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')), 
+      password: new FormControl("", Validators.compose([Validators.required, Validators.pattern(('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')),
       ])
       ),
       password_conf: new FormControl("", Validators.compose([Validators.required, Validators.pattern(('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')),
-      
-      ] )
+
+      ])
       ),
       name: new FormControl("", Validators.compose([Validators.required, Validators.pattern(("^[A-Za-z]+(?:[ -][A-Za-z]+)*$")
       )
@@ -75,19 +75,25 @@ registerMessage:any;
 
   }
 
- 
+
 
   ngOnInit() {
   }
-  register(register_data:any){
-console.log(register_data);
-this.AuthenticateService.registerUser(register_data).then(res => {
-  this.registerMessage=res;
-  this.storage.set('userRegisteredIn', true)
-  this.navCtrl.navigateForward('/login');
-}).catch(err=> {
-  this.registerMessage =err;
-});
+  register(register_data: any) {
 
+    if (register_data.password == register_data.password_conf) {
+
+
+
+      console.log(register_data);
+      this.AuthenticateService.registerUser(register_data).then(res => {
+        this.registerMessage = res;
+        this.storage.set('userRegisteredIn', true)
+        this.navCtrl.navigateForward('/login');
+      }).catch(err => {
+        this.registerMessage = err;
+      });
+
+    } else { console.log('no coinciden las contraseñas') }
   }
 }
