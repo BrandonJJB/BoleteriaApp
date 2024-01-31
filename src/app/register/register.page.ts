@@ -82,9 +82,6 @@ export class RegisterPage implements OnInit {
   register(register_data: any) {
 
     if (register_data.password == register_data.password_conf) {
-
-
-
       console.log(register_data);
       this.AuthenticateService.registerUser(register_data).then(res => {
         this.registerMessage = res;
@@ -95,5 +92,9 @@ export class RegisterPage implements OnInit {
       });
 
     } else { console.log('no coinciden las contraseñas') }
+  }
+
+  goToLogin(){
+    this.navCtrl.navigateBack("/login");
   }
 }
