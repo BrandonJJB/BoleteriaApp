@@ -20,4 +20,10 @@ export class AuthenticateService {
 
     });
   }
+
+  registerUser(credential: any) {
+    return new Promise((accept) => {
+      accept('Registro exitoso')
+    });
+  }
 }

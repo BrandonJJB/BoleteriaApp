@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage-angular';
 import { NavController } from '@ionic/angular';
+import { AuthenticateService } from '../services/authenticate.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -41,10 +42,11 @@ last_name: [
 ]
 
 }
-registerMessage= "Registro exitoso";
+registerMessage:any;
   constructor(private formBuilder: FormBuilder,
     private navCtrl: NavController,
-    private storage: Storage) {
+    private storage: Storage,
+    private AuthenticateService: AuthenticateService) {
 
     this.registerForm = this.formBuilder.group({
       email: new FormControl("", Validators.compose([Validators.required, Validators.pattern(
@@ -52,11 +54,12 @@ registerMessage= "Registro exitoso";
       )
       ])
       ),
-      password: new FormControl("", Validators.compose([Validators.required, Validators.pattern(('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'))
+      password: new FormControl("", Validators.compose([Validators.required, Validators.pattern(('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')), 
       ])
       ),
-      password_conf: new FormControl("", Validators.compose([Validators.required, Validators.pattern(('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'))
-      ])
+      password_conf: new FormControl("", Validators.compose([Validators.required, Validators.pattern(('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')),
+      
+      ] )
       ),
       name: new FormControl("", Validators.compose([Validators.required, Validators.pattern(("^[A-Za-z]+(?:[ -][A-Za-z]+)*$")
       )
@@ -66,11 +69,25 @@ registerMessage= "Registro exitoso";
       )
       ])
       ),
+
     }
     )
+
   }
+
+ 
 
   ngOnInit() {
   }
+  register(register_data:any){
+console.log(register_data);
+this.AuthenticateService.registerUser(register_data).then(res => {
+  this.registerMessage=res;
+  this.storage.set('userRegisteredIn', true)
+  this.navCtrl.navigateForward('/login');
+}).catch(err=> {
+  this.registerMessage =err;
+});
 
+  }
 }
