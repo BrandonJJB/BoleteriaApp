@@ -4,13 +4,15 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
     </ion-toolbar>
-    <ion-content>
-        <swiper-container [pagination]="true">
-            
+</ion-header>
+    <ion-content >
+        <swiper-container [pagination]="true" [slidesPerView]="2">
             <swiper-slide *ngFor="let slide of event_List">
                 <img src="{{slide.image}}">
             </swiper-slide>
         </swiper-container>
         <ion-button (click)="goToIntro()">ver intro</ion-button>
     </ion-content>
-</ion-header>
+
+
+<!--crear un boton en intro para omitir y regresar al home-->
