@@ -9,14 +9,20 @@ import { EventsService } from '../services/events.service';
 })
 export class HomePage {
 
+  event_List :any;
  
   constructor( private router:Router,
               private storage: Storage,
               private events:EventsService) {}
               
            ionViewDidEnter(){
- console.log(this.events.getEvents());
+            this.events.getEvents().then (
+              res =>{
 
+              this.event_List=res;
+              console.log("Eventos desde el servidor",this.event_List)
+            })
+              console.log("Local Events",this.events.getLocalEvents().events);
               }
               
   goToIntro(){
