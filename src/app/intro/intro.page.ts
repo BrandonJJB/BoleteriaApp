@@ -39,6 +39,11 @@ export class IntroPage implements OnInit {
     
 }
 
+skipIntro(){
+  console.log("skip intro");
+  this.router.navigateByUrl('menu/home')
+}
+
   ngOnInit() {
   }
 

@@ -18,4 +18,15 @@ getLocalEvents(){
   return dataEvents;
 }
 
+getCategories(){
+  return fetch(`${this.urlServer}/categories`).then(
+    response=>response.json()
+  );
+  }
+
+
+ 
+
 }
+
+
