@@ -23,10 +23,13 @@ getCategories(){
     response=>response.json()
   );
   }
-
+  getID(id: number){
+    return fetch(`${this.urlServer}/categories/${id}`).then(
+      response=>response.json()
+    );
 
  
 
 }
-
+  }
 
