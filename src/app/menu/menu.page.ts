@@ -22,7 +22,7 @@ closeMenu(){
 
 logout(){
 
-  this.storage.clear();
+  
   this.navCtrl.navigateRoot("/login")
   
 }
