@@ -64,8 +64,7 @@ export class LoginPage implements OnInit {
   }
 
   registerData(){
-    console.log('registrarUser')
-    this.router.navigateByUrl('register');
+    this.router.navigateByUrl('/register');
   }
 }
 
